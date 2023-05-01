@@ -26,7 +26,7 @@ def add_column(data):
     #add power columns
     data['Power_Buy_R'] = data['Val_Buy_R'] / data['No_Buy_R']
     data['Power_Sell_R'] = data['Val_Sell_R'] / data['No_Sell_R']
-    data['Balance_R'] = (data['Val_Buy_R'] - data['Val_Sell_R']) - (data['Val_Buy_I'] - data['Val_Sell_I'])
+    data['Balance_R'] = (data['Val_Buy_R'] - data['Val_Sell_R'])
     
     return data
 
@@ -101,7 +101,7 @@ for seconds in range(200):
     # creating KPIs
     R_Power_Buy = round(data['Val_Buy_R'].sum() / data['No_Buy_R'].sum()* 1000)
     R_Power_Sell = float(data['Val_Sell_R'].sum() / data['No_Sell_R'].sum()* 1000)
-    Money_Entrance = float(data['Balance_R'].sum())
+    Money_Entrance = (data['Balance_R'].sum())
     Retail_Value = float(data['Value'].sum()/10**13)
     P_Final_Stock_Number = len(data[data['Final(%)']>0])/len(data)
     P_Close_Stock_Number = len(data[data['Close(%)']>0])/len(data)
